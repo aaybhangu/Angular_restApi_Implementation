@@ -1,0 +1,9 @@
+
+<div class="container">   
+      <div class="dropdown-item" 
+          *ngFor="let person of people_List">
+        <a
+        [routerLink]="['/people', person._id]" >
+        {{person.name}}</a>
+      </div>
+</div> 

@@ -1,0 +1,38 @@
+<div class="container"> 
+ <div class="card">
+      <div class="card-header">Companies</div>
+      <div class="card-block">
+          <div class="container">          
+            <div class="card"
+            *ngFor="let company of companies_List">
+              <div class="card-header">
+                <a [routerLink]="['/company', company._id]">{{company.name}}</a></div>
+              <div class="card-block">
+                  <div class="container"> 
+                    <div>
+                      <h6>Address:</h6>
+                      <p>{{company.address}}</p>
+                    </div> 
+                    <div>
+                        <h6>Revenue:</h6>
+                        <p>{{company.revenue}}</p>
+                      </div>   
+                    <div>
+                        <h6>Phone:</h6>
+                        <p>{{company.phone}}</p>
+                      </div> 
+                  </div>  
+                </div>
+              <div class="card-header">
+                <a routerLink="" class="badge badge-info"
+                (click)="get_People_List(company)">
+                People who work here</a>
+                </div>
+                <div class="card-block">
+                    <people *ngIf="company.hide_People_List" [company] ="company" ></people>
+                  </div>
+              </div> 
+          </div>  
+        </div>
+      </div>
+</div>

@@ -1,0 +1,55 @@
+
+    <div class="container"> 
+        <div 
+             class="card">
+          <div class="card-header">
+            <a>{{companyDetail.name}}</a></div>
+          <div class="card-block">
+              <div *ngIf="!editing" class="container"> 
+                <div>
+                  <h6>Address:</h6>
+                  <p>{{companyDetail.address}}</p>
+                </div> 
+                <div>
+                    <h6>Revenue:</h6>
+                    <p>{{companyDetail.revenue}}</p>
+                  </div>   
+                <div>
+                    <h6>Phone:</h6>
+                    <p>{{companyDetail.phone}}</p>
+                  </div> 
+                  <button class="btn btn-primary" (click)="editDetail()">Edit</button>
+              </div>  
+              <div *ngIf="editing" class="container"> 
+              <form
+              #f="ngForm" (ngSubmit)="updateDetail(f)">
+              <div class="form-group">
+                  <label for="">Name</label>
+                  <input type="text" [(ngModel)]="companyDetail.name" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <input type="text" [(ngModel)]="companyDetail.address" name="address" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label for="">Revenue</label>
+                      <input type="text" [(ngModel)]="companyDetail.revenue" name="revenue"  class="form-control">
+                    </div> 
+                    <div class="form-group">
+                        <label for="">Phone</label>
+                        <input type="text" [(ngModel)]="companyDetail.phone" name="phone" class="form-control">
+                      </div>
+                      <button class="btn btn-success">Save</button>
+                      <button class="btn btn-secondary" (click)= "editing = false">Cancel</button>
+            </form> 
+            </div>
+            </div>
+          <div class="card-header">
+            <a class="badge badge-info" 
+            (click)="showPeople = !showPeople;">People who work here</a>
+            </div>
+            <div class="card-block">
+                <people *ngIf="showPeople" [company] ="companyDetail" ></people>
+              </div>
+          </div> 
+    </div>  

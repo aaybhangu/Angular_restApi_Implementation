@@ -1,0 +1,43 @@
+
+<div class="container"> 
+    <div class="card">
+      <div class="card-header">Create new company</div>
+      <div class="card-block">
+          <div class="container"> 
+              <form [formGroup]="form" (ngSubmit)="createCompany()">
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input formControlName="name" id="name" type="text" class="form-control">
+                     <div *ngIf="name.touched && name.invalid ||invalidForm" class="alert alert-danger">
+                       <div *ngIf="name.errors.required"> Name is required.</div>   
+                       <div *ngIf="name.errors.minlength"> Name should have minimum {{name.errors.minlength.requiredLength}} charactors.</div>   
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="">Address</label>
+                      <input type="text" formControlName="address" id="address" class="form-control">
+                     <div *ngIf="address.touched  && address.invalid ||invalidForm" class="alert alert-danger">
+                        <div *ngIf="address.errors.required"> Address is required.</div>   
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Revenue</label>
+                        <input type="number" formControlName="revenue" id="revenue" class="form-control"> 
+                      </div> 
+                      <div class="form-group">
+                          <label for="">Phone</label>
+                          <input formControlName="phone" id="phone" type="number" class="form-control">
+                          <div *ngIf="phone.touched  && phone.invalid ||invalidForm" class="alert alert-danger">
+                             <div *ngIf="phone.errors.required">phone number is required.</div>   
+                           </div>
+                        </div>
+                        <div *ngIf="invalidForm" class="alert alert-danger">
+                            Company data is invalid!
+                          </div>
+                          <div *ngIf="companyAdded" class="alert alert-success">Company added Successfully</div>
+                          <button class="btn btn-primary">Save</button>
+              </form>
+          </div>  
+        </div>
+      </div>
+</div>
